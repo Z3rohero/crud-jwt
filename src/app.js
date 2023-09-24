@@ -12,7 +12,6 @@ app.use(morgan('dev'));
 //asi vendra concatenado el api/ con el router
 app.use(express.json());
 app.use(cookieParser());
-
 app.use("/api",router);
 app.use("/api",rutatarea);
 
