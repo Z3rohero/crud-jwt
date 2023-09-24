@@ -65,3 +65,27 @@ export const login = async (req, res) => {
 }
 
 
+export const logout  = async (req, res) => {
+
+    //el valor  se va resetea a 0
+    // se setea el valor del token a " "
+    res.cookie("token", "", { expires: new Date(0) })
+    return res.sendStatus(200);
+
+}
+
+export const profile  = async (req, res) => {
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+        return res.status(400).json({ error: "El usuario no existe" });
+    }else{
+        res.json({
+            id: user._id,
+            username: user.username,
+            email: user.email
+        });
+    }
+
+
+}
